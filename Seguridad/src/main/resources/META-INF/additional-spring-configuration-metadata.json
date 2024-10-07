@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "openweathermap.api.key",
+      "type": "java.lang.String",
+      "description": "Description for openweathermap.api.key."
+  }
+] }
