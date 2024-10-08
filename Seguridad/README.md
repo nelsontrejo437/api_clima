@@ -23,6 +23,7 @@ Este es una pequeña api en la cual se pretender implementar algunos servicios t
 http://localhost:8082/swagger-ui/index.html
 
 ### Configuracion para la delimitacion de peticiones
+
 configuracion para la delimitacion de peticiones por usuario:
 resilience4j.ratelimiter.instances.apiRateLimiter.limitForPeriod=5
 resilience4j.ratelimiter.instances.apiRateLimiter.limitRefreshPeriod=3600s

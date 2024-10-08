@@ -22,7 +22,6 @@ public class Auditoria {
         this.repo = repo;
     }
 
-    //@Around(value = "(execution(* org.seguridad.seguridad.controllers.ClimaController.*(..)))")
     @Around(value = "execution(* org.seguridad.seguridad.clima.controllers.ClimaController.*(..))")
     public Object audit(ProceedingJoinPoint join) throws Throwable {
         String consulta = join.getSignature().toShortString();
