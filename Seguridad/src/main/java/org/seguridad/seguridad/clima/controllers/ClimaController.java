@@ -13,6 +13,8 @@ import org.seguridad.seguridad.paises.services.GeonamesServices;
 import org.seguridad.seguridad.service.UsuariosServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import java.util.List;
 import java.util.Map;

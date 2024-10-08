@@ -1,35 +1,35 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:latest
-    container_name: postgres_db
-    restart: always
+  db:
+    image: postgres:14
+    container_name: postgres-db
     environment:
-      POSTGRES_DB: auditorias
       POSTGRES_USER: trejito
       POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: auditorias
     ports:
       - "5433:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data 
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    restart: always
-    environment:
-      DATASOURCE_URL: jdbc:postgresql://auditorias:5432/auditorias?createDatabaseIfNotExist=true&serverTimezone=UTC
-      DATASOURCE_USERNAME: trejito
-      DATASOURCE_PASSWORD: 1234
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
-      OPENWEATHERMAP_API_KEY: 7ca0086417fee50057b06f637758b88c
-      GEONAMES_USERNAME: trejito
-      DEBUG: true
+    container_name: app_clima
+    env_file: .env
     ports:
       - "8082:8082"
     depends_on:
-      - postgres
+      - db
+    networks:
+      - app-network
 
 volumes:
   postgres_data:
+
+networks:
+  app-network:

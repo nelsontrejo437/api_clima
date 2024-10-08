@@ -25,15 +25,15 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/register", "/auth/login").permitAll()
-                        .requestMatchers("/clima/**").permitAll()
-                        .requestMatchers("/clima/pronostico/**").permitAll()
-                        .requestMatchers("/clima/contaminacion/**").permitAll()
-                        .requestMatchers("/clima/paises/**").permitAll()
-                        .requestMatchers("/clima/ciudades/**").permitAll()
+                        .requestMatchers("/clima/**").authenticated()
+                        .requestMatchers("/clima/pronostico/**").authenticated()
+                        .requestMatchers("/clima/contaminacion/**").authenticated()
+                        .requestMatchers("/clima/paises/**").authenticated()
+                        .requestMatchers("/clima/ciudades/**").authenticated()
                         .requestMatchers("/swagger-ui/**").permitAll()
                         .requestMatchers("/v3/api-docs/**").permitAll()
-                        .requestMatchers("/consultas/**").permitAll()
-                        .requestMatchers("/consultas/users/request/**").permitAll()
+                        .requestMatchers("/consultas/**").authenticated()
+                        .requestMatchers("/consultas/users/request/**").authenticated()
                         .anyRequest().authenticated())
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
