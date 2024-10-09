@@ -15,7 +15,6 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                // Configura los paquetes que deseas documentar
                 .apis(RequestHandlerSelectors.basePackage("org.seguridad.seguridad.controllers"))
                 .paths(PathSelectors.any())
                 .build();
